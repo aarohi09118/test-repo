@@ -7,13 +7,14 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-s = "/Users/apple/Desktop/cd"
-
 opt = Options()
 # driver = webdriver.Chrome(service=s, options=opt)
 chrome_options = webdriver.ChromeOptions()
 chrome_options.add_argument("--disable-notifications")
-driver = webdriver.Chrome(opt)
+# chrome_options.add_argument("--headless")
+# chrome_options.add_argument("log-level=3")
+driver = webdriver.Chrome(options=chrome_options)
+# driver = webdriver.Chrome(opt)
 driver.get("https://universityliving.com")
 driver.maximize_window()
 driver.implicitly_wait(10)
@@ -27,11 +28,11 @@ driver.find_element(By.XPATH,"//div[text()='Find a Pickup']").click()
 driver.find_element(By.XPATH,"//input[@placeholder='Enter Email']").send_keys("pravin.garg@universityliving.com")
 driver.find_element(By.XPATH,"//div[text()='Login']").click()
 
-driver.find_element(By.NAME, "otp0").send_keys("1")
-driver.find_element(By.NAME, "otp1").send_keys("2")
+driver.find_element(By.NAME, "otp0").send_keys("5")
+driver.find_element(By.NAME, "otp1").send_keys("4")
 driver.find_element(By.NAME, "otp2").send_keys("3")
-driver.find_element(By.NAME, "otp3").send_keys("4")
-driver.find_element(By.NAME, "otp4").send_keys("5")
+driver.find_element(By.NAME, "otp3").send_keys("2")
+driver.find_element(By.NAME, "otp4").send_keys("1")
 driver.find_element(By.CSS_SELECTOR, "form button div").click()
 driver.find_element(By.XPATH,"//div[text()='Find a Pickup']").click()
 time.sleep(5)
@@ -41,4 +42,4 @@ driver.find_element(By.XPATH,"//input[@placeholder='Email']").send_keys("pravin.
 driver.find_element(By.XPATH,"//input[@placeholder='Contact Number']").send_keys("9012659233")
 driver.find_element(By.XPATH,"//div[text()='Submit']").click()
 time.sleep(10)
-
+driver.quit()
